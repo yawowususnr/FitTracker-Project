@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="col-xs-10 col-sm-6 col-md-6" ml-auto mr-auto>
+    <div class="card card-style mb-2">
+        <div class="card-body">
+            <form action="" method="POST">
+                {{ form.csrf_token() }}
+                <fieldset class="form-group">
+                    <legend class="mb-4 ">Welcome To FitTracker, Please Input your Current Information and your goals</legend>
+                    <br  >
+                    <div class="form-group">
+                        {{ form.age.label(class = "form-control-label") }}
+                        {{ form.age(class = "form-control form-control-sm") }}
+                    </div>
+            
+                    <div class="form-group">
+                        {{ form.weight.label(class = "form-control-label") }}
+                        {{ form.weight(class = "form-control form-control-sm") }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.weight_goal.label(class = "form-control-label") }}
+                        {{ form.weight_goal(class = "form-control form-control-sm") }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.height.label(class = "form-control-label") }}
+                        {{ form.height(class = "form-control form-control-sm") }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.gender.label(class = "form-control-label") }}
+                        {{ form.gender(class = "form-control form-control-sm") }}
+                    </div>
+
+                    <div class="form-group border-bottom pb-3">
+                        {{ form.submit(class="btn btn-outline-info") }}
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+    
+{% endblock %}

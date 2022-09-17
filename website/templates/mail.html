@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="col-xs-10 col-sm-8 col-md-8" ml-auto mr-auto>
+    <div class="card card-style mb-2">
+        <div class="card-body"><h1>Get started with FitTracker</h1>
+            <p class="fs-5 col-md-8">Fill out this form to get a baseline understanding of your health and other biometric indicators.</p>
+
+            <div class="mb-5">
+            <a href="http://127.0.0.1:5000/goal" class="btn btn-primary btn-lg px-4">Enter Information Here</a>
+            </div>
+
+            <hr class="col-3 col-md-2 mb-5">
+
+            <div class="row g-5">
+            <div class="col-md-6">
+                <h2>Biometric Information</h2>
+                <p>Here, you will find details about your fitness information. Including BMI, weight goals, body fat%, etc.</p>
+                <ul class="icon-list">
+                <li><a href="http://127.0.0.1:5000/add" rel="noopener" target="_blank">Add a new entry</a></li>
+    
+                </ul>
+            </div>
+
+            <div class="col-md-6">
+                <h2>Progress Dashboard</h2>
+                <p>Here is where you will find progress related.</p>
+                <ul class="icon-list">
+                <li><a href="/dashboard">Dashboard</a></li>
+                </ul>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

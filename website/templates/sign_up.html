@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block title %}Sign Up{% endblock %} 
+
+{% block content %}
+<div class="col-xs-10 col-sm-6 col-md-6" ml-auto mr-auto>
+    <div class="card card-style mb-2">
+        <div class="card-body"><form method="POST">
+            <form method="POST">
+                <h3 align="center">Sign Up</h3>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email"/>
+                
+                </div>
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter First Name"/>
+                
+                </div>
+                <div class="form-group">
+                    <label for="password1">Password (Password must be at least 8 characters)</label>
+                    <input type="password" class="form-control" id="password1" name="password1" placeholder="Enter Password"/>
+                
+                </div>
+                <div class="form-group">
+                    <label for="password2">Password (Confirm)</label>
+                    <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm Password"/>
+                
+                </div>
+                <br />
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+                <small class='text-muted'>
+                    Already Have An Account, <a href="{{ url_for('auth.login') }}">Login</a>
+                </small>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+{% endblock %}

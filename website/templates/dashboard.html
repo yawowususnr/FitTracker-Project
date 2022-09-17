@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+<div class="col-xs-10 col-sm-10 col-md-10">
+    <div class="card card-style mb-2">
+        <div class="card-body">
+            <div class="chart-container" style="position: relative;">
+                <canvas id="expenses_over_time"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block javascript %}
+<script>
+    Chart.scaleService.updateScaleDefaults('linear', {
+            ticks: {
+                min: 0
+            }
+    });
+
+        let dates = JSON.parse({{ dates_label | tojson }});
+        let weight = JSON.parse({{ over_time_expenditure | tojson }});
+        
+        new Chart(document.getElementById("expenses_over_time"), {
+                type: "line",
+                data:
+                {
+                    labels: dates,
+                    datasets: [{
+                        label: "Change In Weight Over Time;",
+                        label: "Goal weight",
+                        
+                        data: weight,
+                        fill: false,
+                        borderColor: "rgb(75, 112, 192)",
+                        lineTension: 0.2
+                    }]
+                },
+                options: {}
+            });
+
+
+
+</script>
+
+
+
+<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+    <h2 class="display-4 fw-normal">Details</h1>
+    <h2 class="card-title pricing-card-title">Details about your progress can be seen below</h1>
+  </div>
+  <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal">Weight</h4>
+        </div>
+        <div class="card-body">
+
+          {% for l in range(1) %}
+          {% if currentWeight > goalweight %}
+          <h1 class="card-title pricing-card-title text-success">{{ currentWeight }}
+          {% else %}
+          <h1 class="card-title pricing-card-title text-danger">{{ currentWeight }}
+          {% endif %}
+          {% endfor %}
+            <small class="text-muted fw-light">/{{ goalweight }}</small></h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            {% if currentWeight > goalweight %}
+              <li>You are above your weight goal</li>
+            {% else %}
+              <li>You are below your weight goal</li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal">BMI</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">{{ bmi }}<small class="text-muted fw-light">/BMI</small></h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            {% if bmi < 18.5 %}
+            <li >Your BMI indicates you are underweight</li>
+            {% elif 18.5 < bmi < 23.5 %}
+            <li>Your BMI indicates you are healthy</li>
+            {% elif 23.5 < bmi < 26 %}
+            <li>Your BMI indicates you are overweight</li>
+            {% elif bmi > 30 %}
+            <li>Your BMI indicates you are obese </li>
+            {% else %}
+            <li>Your BMI indicates you are extremely obese </li>
+            {% endif %}
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm border-primary">
+        <div class="card-header py-3 ">
+          <h4 class="my-0 fw-normal">consume</h4>
+        </div>
+        <div class="card-body">
+          <h3 class="card-small">{{ consume }}<small class="text-muted fw-light">/{{ calint }}calories per day</small></h3>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li href="https://www.healthline.com/health/what-is-basal-metabolic-rate#:~:text=Basal%20metabolic%20rate%20(BMR).,heart%20rate%2C%20and%20brain%20function.">to understand more about bmr visit</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+    <div class="col-sm-10 ml-auto mr-auto ">
+        <H2>Activity Monitoring</H2>
+        <body class="text-center"> 
+        <div class="mb-5">
+            <a href="http://127.0.0.1:5000/add" class="btn btn-primary btn-md px-2">Update Information Here</a>
+            </div>
+        </body>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Weight</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in entries %}
+                        <tr>
+                            <th scope="row">{{loop.index}}</th>
+                            <td>{{entry.date.strftime("%m-%d-%Y")}}</td>
+                            <td>{{ entry.weight }}</td>
+                            <td><a href="{{ url_for('views.delete', entry_id = entry.id) }}" 
+                                    class="btn btn-outline-danger btn-sm">Delete</a></td>
+                        </tr>
+                {% endfor %}
+        </tbody>
+        </table>
+    </div>
+    
+{% endblock %}

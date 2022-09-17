@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Line</title>
+  <style>
+    .chartBox{
+      width: 700px
+    }
+  </style>
+</head>
+<body>
+  
+<div class='chartBox'>
+  <canvas id="myChart" width="200" height="200"></canvas>
+</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+ function display_graph(id, label, data) {
+var ctx = document.getElementById(id);
+var data = {
+    labels: data.labels,
+    datasets: [
+        {
+            label: label,
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: "rgba(75,192,192,0.4)",
+            borderColor: "rgba(75,192,192,1)",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderWidth: 1,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(75,192,192,1)",
+            pointBackgroundColor: "#fff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(75,192,192,1)",
+            pointHoverBorderColor: "rgba(220,220,220,1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: data.assay_value,
+            spanGaps: false
+        }
+    ]
+};
+
+//options
+var options = {
+    responsive: true,
+    title: {
+        display: true,
+        position: "top",
+        text: label,
+        fontSize: 18,
+        fontColor: "#111"
+    },
+    legend: {
+        display: true,
+        position: "bottom",
+        labels: {
+            fontColor: "#333",
+            fontSize: 16
+        }
+    }
+};
+var Blanks_Chart=null;
+Blanks_Chart = new Chart(ctx, {
+    type: 'line',
+    data: data,
+    options: options
+});}
+  </script>
+
+</body>
+</html>
